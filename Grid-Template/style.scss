@@ -1,0 +1,307 @@
+@import 'variables';
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.container{
+    max-width: 800px;
+    width:100%;
+    margin: 0 auto;
+}
+
+@mixin grid($grid, $box1, $box2){
+    display: $grid;
+    grid-template-columns: $box1 $box2;
+
+}
+@mixin grid2($grid, $box1, $box2){
+    display: $grid;
+    grid-template-columns: repeat($box1,$box2);
+
+}
+
+%btn{
+    padding:10px;
+    color:$text-color;
+    border-radius: 3px;
+   
+}
+.header-section{
+    background-color:$primary-color;
+ 
+    header{
+        @include grid(grid,1fr,0fr);
+        padding:20px 0;
+        color:$base-color;
+        nav{
+        padding-top: 5%;
+        
+            ul{
+                list-style: none;
+                @include grid2(grid,5,70px);
+                grid-gap: 10px;
+                font-size: 12px;
+                li{
+                    &:first-child{
+                        color:$text-color;
+            
+                    }
+            
+                    &:last-child{
+                        border: 0.2px solid $base-color;
+                        padding: 4px;
+                        text-align: center;
+                    }
+
+                    &:hover{
+                        color: $text-color;
+                    }
+                }
+                
+                
+            }
+        }
+    }
+    .analytics{
+        @include grid(grid,auto,auto);
+        color: $text-color; 
+        padding:20px 0;
+        p{
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .mobile-app{
+            font-size: 20px;
+        
+        }
+        .try-button{
+            .btn-green{
+                @extend %btn;
+                background-color: $button-color;
+                border:1px solid $button-color;
+            }
+        }
+    }
+}
+
+.progress-section{
+    @include grid(grid,1fr,2fr);
+    padding:4rem 0;
+    .progress{
+        width:100px;
+        height: 100px;
+        border: 1px solid $para-color;
+        border-radius: 50%;
+        position: relative;
+    }
+    .progress-text{
+        p{
+            margin-bottom: 10px;
+            &:last-child{
+                color:$para-color;
+            }
+        }
+    
+    }
+}
+.rankings-bg{
+    background-color: $bg-color;
+    padding-top:4rem;
+    .rankings{
+        @include grid(grid,1.3fr,1fr);
+        grid-gap:50px;
+        margin-bottom: 2rem;;
+     
+        .ranking-text{
+            p{
+                color:$para-color;
+                margin-top: 8px;
+                font-size: 14px;
+                text-align: justify;
+            }
+        }
+        .ranking-img{
+            figcaption{
+                margin-left:3rem;
+            }
+        }
+    }
+}
+
+.coverage{
+    @include grid(grid,1fr,1fr);
+    grid-gap:130px;
+    padding:4rem 0;
+    p{
+        font-size: 14px;
+        margin-top: 8px;
+        color:$para-color;
+        text-align: justify;
+    }
+}
+
+.trusted-bg{
+    background-color: $bg-color;
+    padding:4rem 0;
+    h2{
+        text-align: center;
+        padding: 20px 0;
+    }
+    img{
+        border-radius: 50%;
+        width:80px;
+        height: 80px;
+        justify-content: center;
+    }
+    p{
+        text-align: center;
+        font-size: 14px;
+        margin-top: 8px;
+        color:$para-color;
+        line-height: 1.7;
+    }
+    span{
+        color:$primary-color;
+    }
+    .trusted{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        text-align: center;
+        grid-gap:60px;
+        .trusted-1{
+            padding-right: 35px;
+            border-right: 0.3px solid $border-color;
+        }
+        .trusted-2{
+            padding-right: 35px;
+            border-right: 0.3px solid $border-color;
+        }
+    }
+}
+
+.free-section{
+    background-color: $primary-color;
+    color:$text-color;
+    text-align: center;
+    padding:4rem 0;
+    h1{
+        font-size: 2.2rem;
+        span{
+            text-decoration: underline;
+        }
+    }
+    p{
+        margin: 8px 0; 
+    }
+    .btn-green{
+        @extend %btn;
+        background-color: $button-color;
+        border:1px solid $button-color;
+        margin-top: 2rem;
+        font-size: 1.5rem;;
+    }
+}
+
+footer{
+    display: flex;
+    padding:2.5rem 0;
+    justify-content: space-between;
+    color:$para-color;
+    ul{
+        list-style: none;
+        display: flex;
+        font-size: 15px;
+        li::after{
+            content: '/';
+            padding-right: 6px;
+
+        }
+    }
+    .footer-text{
+        font-size: 15px;
+        span{
+            color:$primary-color;
+        }
+    }
+}
+
+
+@media screen and (max-width:768px){
+    body{
+        text-align: center;
+    }
+    .container{
+        max-width: 600px;
+    }
+    .header-section{
+        header{
+            grid-template-columns: 1fr;
+            div{
+                justify-self: center;
+            }
+            nav{
+                ul{
+                    grid-template-columns: repeat(5, auto);
+                }
+            }
+        }
+        .analytics{
+            grid-template-columns: 1fr;
+            .mobile-app{
+            justify-self: center;
+            text-align: center;
+            }
+            .try-button{
+                justify-self: center;
+                text-align: center;
+                margin-top:2rem;
+            }
+        }
+    }
+    .progress-section{
+        grid-template-columns: 1fr;
+        .progress{
+            justify-self: center;
+            width:50px;
+            height:50px;
+        }
+        .progress-text{
+            margin-top:3rem;
+        }
+    }
+    .rankings-bg{
+        .rankings{
+            grid-template-columns: 1fr;
+            .ranking-img{
+                justify-self: center;
+            }
+        }
+    }
+    .coverage{
+        grid-template-columns: 1fr;
+     
+        h3{
+            text-align: center;
+        }
+    }
+
+    .trusted-bg{
+        .trusted{
+            grid-template-columns: 1fr;
+        }
+    }
+
+    footer{
+        flex-direction: column;
+        div{
+            line-height: 2.2;
+        }
+        ul{
+            flex-direction: column;
+        }
+    }
+}
